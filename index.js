@@ -85,14 +85,14 @@ function handleSize(e){
 
 // Function to resolve data URL for QR code image
 function resolveDataUrl(){
-    setTimeout(() => {
+    return new Promise((resolve, reject) => {
         const img = document.querySelector("#qr-code img");
         if(img.currentSrc){
-            resolveDataUrl(img.currentSrc);
+            resolve(img.currentSrc);
             return;
         }
         const canvas = document.querySelector("canvas");
-        resolveDataUrl(canvas.toDataURL());
+        resolve(canvas.toDataURL());
     }, 50);
 };
 
